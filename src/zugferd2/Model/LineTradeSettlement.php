@@ -36,6 +36,13 @@ class LineTradeSettlement
     public TradeSettlementLineMonetarySummation $monetarySummation;
 
     /**
+     * @var AdditionalReferencedDocument[]
+     */
+    #[Type('array<Easybill\ZUGFeRD2\Model\AdditionalReferencedDocument>')]
+    #[XmlList(entry: 'AdditionalReferencedDocument', inline: true, namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100')]
+    public array $additionalReferencedDocument = [];
+
+    /**
      * @var TradeAccountingAccount[]
      */
     #[Type('array<Easybill\ZUGFeRD2\Model\TradeAccountingAccount>')]
