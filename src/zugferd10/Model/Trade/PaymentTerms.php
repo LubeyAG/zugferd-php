@@ -14,18 +14,22 @@ class PaymentTerms
      *
      * @param string $description
      */
-    public function __construct(#[JMS\Type('string')]
+    public function __construct(
+        #[JMS\Type('string')]
         #[JMS\XmlElement(cdata: false, namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:12')]
         #[JMS\SerializedName('Description')]
-        private $description, #[JMS\Type(Date::class)]
+        private ?string$description,
+
+        #[JMS\Type(Date::class)]
         #[JMS\XmlElement(cdata: false, namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:12')]
         #[JMS\SerializedName('DueDateDateTime')]
-        private Date $dueDate) {}
+        private ?Date $dueDate=null
+    ) {}
 
     /**
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -41,7 +45,7 @@ class PaymentTerms
     /**
      * @return Date
      */
-    public function getDueDate()
+    public function getDueDate(): ?Date
     {
         return $this->dueDate;
     }
@@ -49,7 +53,7 @@ class PaymentTerms
     /**
      * @param Date $dueDate
      */
-    public function setDueDate($dueDate)
+    public function setDueDate(?Date $dueDate)
     {
         $this->dueDate = $dueDate;
     }
